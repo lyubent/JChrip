@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package net.zanity.cassandra.schema;
 
 import java.sql.ResultSet;
@@ -24,7 +20,7 @@ import me.prettyprint.hector.api.query.RangeSlicesQuery;
 
 /**
  *
- * @author fps700
+ * @author Lyuben Todorov
  */
 public class QueryTest 
 {
@@ -71,11 +67,11 @@ public class QueryTest
             QueryResult<OrderedRows<String, String, String>> result = rangeSlicesQuery.execute();
             System.out.println("Result from rangeSlices query: ");
             
-            Iterator it = result.get().iterator();
-            while(it.hasNext())
-            {
-                System.out.println(it.next().toString());
-            }
+//            Iterator it = result.get().iterator();
+//            while(it.hasNext())
+//            {
+//                System.out.println(it.next().toString());
+//            }
             result.get().getList();
             for(Row<String, String, String> rowData : result.get().getList())
             {
@@ -87,10 +83,6 @@ public class QueryTest
                 }
                 System.out.println("");
             }
-            
-            
-            
-            System.out.println("\n\n\n\n__________________________>");
             
             ColumnQuery<String, String, String> columnQuery = HFactory.createStringColumnQuery(keyspaceOperator);
             columnQuery.setColumnFamily(_COLUMNFAMILY).setKey("fake_key_0").setName("fake_column_0");
