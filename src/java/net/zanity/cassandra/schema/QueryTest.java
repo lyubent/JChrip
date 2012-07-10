@@ -61,11 +61,10 @@ public class QueryTest
                 HFactory.createRangeSlicesQuery(keyspaceOperator, stringSerializer, stringSerializer, stringSerializer);
             rangeSlicesQuery.setColumnFamily(_COLUMNFAMILY);            
             rangeSlicesQuery.setKeys("", "");
-            rangeSlicesQuery.setRange("", "", false, 3);
+            rangeSlicesQuery.setRange("John", "John", false, 3);
             
             rangeSlicesQuery.setRowCount(10);
             QueryResult<OrderedRows<String, String, String>> result = rangeSlicesQuery.execute();
-            System.out.println("Result from rangeSlices query: ");
             
 //            Iterator it = result.get().iterator();
 //            while(it.hasNext())

@@ -1,5 +1,8 @@
 package net.zanity.cassandra.schema;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import me.prettyprint.cassandra.serializers.StringSerializer;
 import me.prettyprint.hector.api.Cluster;
 import me.prettyprint.hector.api.Keyspace;
@@ -20,6 +23,11 @@ public class TweetHandler
     private Keyspace tweetKeyspace;
     private static StringSerializer stringSerializer = StringSerializer.get();
     
+    public String displayTestData()
+    {
+        return "If this is displayed, i know how to use jstl... sort of :)";
+    }
+    
     public void addTweet()
     {
         try
@@ -32,16 +40,6 @@ public class TweetHandler
             mutator.insert("ILIKEPIE!!!!!" + i,                                // row key
                            SchemaStore.getTweetColumnFamily(),             // column family
                            HFactory.createStringColumn("first", "John"));  // column:value pair
-            
-                            //CF    //KS            //Column pair
-//            ColumnQuery<String, String, String> columnQuery = HFactory.createStringColumnQuery(tweetKeyspace);
-//            columnQuery.setColumnFamily(SchemaStore.getKeyspaceName()).setKey("jsmith").setName("first");
-            
-            //execute query, adds data to cassandra store
-//            QueryResult<HColumn<String, String>> result = columnQuery.execute();
-            
-//            System.out.println("Read HColumn from cassandra: " + result.get());            
-//            System.out.println("Verify on CLI with:  get Keyspace1.Standard1['jsmith'] ");
         }
         catch(Exception ex)
         {
@@ -51,6 +49,15 @@ public class TweetHandler
         }
     }
     
+    public List<String> getTweetsByUser()
+    {
+        List<String> tweetList = new ArrayList<String>();
+        
+        
+        
+        return tweetList;
+    }
+            
     public static void main(String [] args)
     {
         TweetHandler tweety = new TweetHandler();
